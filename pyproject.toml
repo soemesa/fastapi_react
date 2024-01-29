@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "fastapi-react"
+version = "0.1.0"
+description = ""
+authors = ["Soilenyis <soilenyis@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.109.0"
+uvicorn = "^0.27.0.post1"
+ruff = "^0.1.14"
+isort = "^5.13.2"
+blue = "^0.9.1"
+pydantic = "^2.5.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+exclude = ['.venv', 'migrations']
+
+[tool.isort]
+profile = "black"
+line_length = 79
+extend_skip = ['migrations']
+
+[tool.blue]
+extend-exclude = '(migrations/)'
