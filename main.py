@@ -1,7 +1,10 @@
 import uvicorn
 from fastapi import FastAPI
 
+from src.routes import fornecedores
+
 app = FastAPI()
+app.include_router(fornecedores.router)
 
 @app.get('/')
 def index():
