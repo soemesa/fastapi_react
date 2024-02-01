@@ -1,10 +1,11 @@
 import uvicorn
 from fastapi import FastAPI
 
-from src.routes import fornecedores
+from src.routes import fornecedores, produtos
 
 app = FastAPI()
 app.include_router(fornecedores.router)
+app.include_router(produtos.router)
 
 @app.get('/')
 def index():

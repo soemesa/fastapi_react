@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class FornecedorSchema(BaseModel):
@@ -10,3 +10,14 @@ class FornecedorSchema(BaseModel):
 
 class FornecedorList(BaseModel):
     fornecedores: list[FornecedorSchema]
+
+class ProdutoSchema(BaseModel):
+    id: int | None = None
+    nome: str
+    quantidade_estoque: int
+    quantidade_vendida: int
+    preco_unico: float
+    receita: float
+
+class ProdutoList(BaseModel):
+    produtos: list[ProdutoSchema]

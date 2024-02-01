@@ -1,6 +1,6 @@
 
 from sqlalchemy import String, ForeignKey, Float
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
 class BaseModel(DeclarativeBase):
@@ -17,7 +17,8 @@ class Produto(BaseModel):
     preco_unico: Mapped[float] = mapped_column(Float(precision=8, decimal_return_scale=2), default=0.00)
     receita: Mapped[float] = mapped_column(Float(precision=8, decimal_return_scale=2), default=0.00)
 
-    fornecedor: Mapped[int] = mapped_column(ForeignKey('fornecedor.id'))
+    fornecedor = relationship('Fornecedor', back_populates='produto')
+    fornecido_por: Mapped[int] = mapped_column(ForeignKey('fornecedor.id'))
 
 
 class Fornecedor(BaseModel):
@@ -28,4 +29,6 @@ class Fornecedor(BaseModel):
     empresa: Mapped[str] = mapped_column(String(20))
     email: Mapped[str] = mapped_column(String(100))
     telefone: Mapped[str] = mapped_column(String(15))
+
+    produto = relationship('Produto', back_populates='fornecedor')
 
